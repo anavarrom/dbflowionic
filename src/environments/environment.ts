@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  auth_config: {
+    client_id: 	'0oarajpz7qbHQfAdO4x6',
+    server_host: 'https://dev-811107.okta.com/oauth2/default',
+    redirect_url: 'dev.localhost.ionic:/callback',
+    end_session_redirect_url: 'dev.localhost.ionic:/endsession',
+    // redirect_url: 'http://localhost:8100/callback',
+    // end_session_redirect_url: 'http://localhost:8100/endsession',
+    scopes: 'openid profile offline_access',
+    pkce: true
+  }
 };
 
 /*
