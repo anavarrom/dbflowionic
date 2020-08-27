@@ -1,7 +1,23 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IAuthAction, AuthActions, AuthObserver, AuthService } from 'ionic-appauth';
 import { NavController } from '@ionic/angular';
+import {AppointmentService} from '../data/api/appointment.service'
+import { HttpResponse } from '@angular/common/http';
+import { IAppointment } from '../data/interfaces/models';
+import { Moment } from 'moment';
 
+export class Appointment implements IAppointment{
+  constructor(
+      public id?: number,
+      public from?: string,
+      public to?: string,
+      public text?: string,
+      public description?: string,
+      public startDate?: Moment,
+      public endDate?: Moment,
+      public allDay?: boolean
+    ) {}
+}
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -12,10 +28,12 @@ export class HomePage implements OnInit, OnDestroy {
   action: IAuthAction;
   observer: AuthObserver;
   userObserver: AuthObserver;
+  appointments: Appointment[];
 
   constructor(
     private auth: AuthService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private appService: AppointmentService
   ) { }
 
   ngOnInit() {
@@ -54,4 +72,15 @@ export class HomePage implements OnInit, OnDestroy {
     this.auth.refreshToken();
   }
 
+  public testData() {
+    this.appService.queryAllAppointmsFromUser().subscribe(
+      // (notifs: INotification[]) => {
+      (apps: HttpResponse<IAppointment[]>) => {
+        this.appointments = apps.body;
+      }, err => {
+        // Log errors if any
+        console.log(err);
+      }
+    );  }
 }
+

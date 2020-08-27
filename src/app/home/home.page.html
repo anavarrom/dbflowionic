@@ -8,6 +8,7 @@
   <ion-button (click)="getUserInfo()">Get User Details</ion-button>
   <ion-button (click)="refreshToken()">Refresh Token</ion-button>
   <ion-button (click)="signOut()">Sign Out</ion-button>
+  <ion-button (click)="testData()">TestData</ion-button>
 
   <ion-card *ngIf="action">
     <ion-card-header>
@@ -26,4 +27,19 @@
       {{userInfo | json}}
     </ion-card-content>
   </ion-card>
+  <ion-card *ngIf="appointments">
+    <ion-card-header>
+      Test Data
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let app of appointments">
+            <ion-label>Data</ion-label>
+            <ion-note slot="end">{{app.text}}</ion-note>
+        </ion-item>
+      </ion-list>      
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
+

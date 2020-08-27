@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
+import { AppointmentService } from './data/api/appointment.service';
+import { AuthInterceptor } from './core/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +22,12 @@ import { CoreModule } from './core/core.module';
     CoreModule
   ],
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AppointmentService
   ],
   bootstrap: [AppComponent]
 })
