@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IAuthAction, AuthActions, AuthObserver, AuthService } from 'ionic-appauth';
 import { NavController } from '@ionic/angular';
-import {AppointmentService} from '../data/api/appointment.service'
+import {AppointmentService} from '../../data/api/appointment.service'
 import { HttpResponse } from '@angular/common/http';
-import { IAppointment } from '../data/interfaces/models';
+import { IAppointment } from '../../data/interfaces/models';
 import { Moment } from 'moment';
 
 export class Appointment implements IAppointment{

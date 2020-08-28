@@ -7,9 +7,9 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CoreModule } from './core/core.module';
+import { AuthModule } from './auth/auth.module';
 import { AppointmentService } from './data/api/appointment.service';
-import { AuthInterceptor } from './core/auth.interceptor';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +19,7 @@ import { AuthInterceptor } from './core/auth.interceptor';
     IonicModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
-    CoreModule
+    AuthModule
   ],
   providers: [
     {

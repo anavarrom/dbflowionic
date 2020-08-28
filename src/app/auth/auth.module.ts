@@ -32,4 +32,4 @@ import { authFactory } from './factories';
     }
   ]
 })
-export class CoreModule { }
+export class AuthModule { }

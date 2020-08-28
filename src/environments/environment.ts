@@ -4,15 +4,15 @@
 
 export const environment = {
   production: false,
-  basePath: 'http://10.0.2.2:8080/services',
-  // basePath: 'http://localhost:8080/services',
+  // basePath: 'http://10.0.2.2:8080/services',
+  basePath: 'http://localhost:8080/services',
   auth_config: {
     client_id: 	'0oarajpz7qbHQfAdO4x6',
     server_host: 'https://dev-811107.okta.com/oauth2/default',
-    redirect_url: 'dev.localhost.ionic:/callback',
-    end_session_redirect_url: 'dev.localhost.ionic:/endsession',
-    // redirect_url: 'http://localhost:8100/callback',
-    // end_session_redirect_url: 'http://localhost:8100/endsession',
+    // redirect_url: 'dev.localhost.ionic:/callback',
+    // end_session_redirect_url: 'dev.localhost.ionic:/endsession',
+    redirect_url: 'http://localhost:8100/callback',
+    end_session_redirect_url: 'http://localhost:8100/endsession',
     scopes: 'openid profile offline_access',
     pkce: true
   }
