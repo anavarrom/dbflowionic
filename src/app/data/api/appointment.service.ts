@@ -5,26 +5,8 @@ import * as moment from 'moment';
 import { map } from 'rxjs/operators';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const DATE_FORMAT = 'YYYY-MM-DD';
-// import { DATE_FORMAT } from '../../shared/input.constants';
-import { HttpParams } from '@angular/common/http';
-export const createRequestOption = (req?: any): HttpParams => {
-  let options: HttpParams = new HttpParams();
-  if (req) {
-    Object.keys(req).forEach(key => {
-      if (key !== 'sort') {
-        options = options.set(key, req[key]);
-      }
-    });
-    if (req.sort) {
-      req.sort.forEach(val => {
-        options = options.append('sort', val);
-      });
-    }
-  }
-  return options;
-};
-// import { createRequestOption } from '../../shared/request-util';
+import { DATE_FORMAT } from '../input.constants';
+import { createRequestOption } from '../request-util';
 import { IAppointment } from '../../data/interfaces/models';
 
 import {environment} from '../../../environments/environment';

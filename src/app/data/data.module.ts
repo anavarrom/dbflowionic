@@ -1,21 +1,30 @@
-/*import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
+import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
 import { Configuration } from './configuration';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 import { NotificactionService } from './api/notification.service';
-import { KeycloakBearerInterceptor } from 'keycloak-angular';
+import { ChatService } from './api/chat.service';
+import { MessageService } from './api/message.service';
+import { AppointmentService } from './api/appointment.service';
+import { SafeKeepingPeriodService } from './api/safekeepingperiod.service';
+import { SafeKeepingProjectService } from './api/safekeepingproject.service';
 
+const dbFlow6Services = [
+    NotificactionService,
+    ChatService,
+    MessageService,
+    AppointmentService,
+    SafeKeepingPeriodService,
+    SafeKeepingProjectService
+];
+  
 @NgModule({
   imports:      [HttpClientModule],
   declarations: [],
   exports:      [],
   providers: [
-    {
-        provide: HTTP_INTERCEPTORS,
-        useClass: KeycloakBearerInterceptor,
-        multi: true
-      }
+      dbFlow6Services
   ]
 })
 export class DataModule {
@@ -37,4 +46,3 @@ export class DataModule {
         }
     }
 }
-*/

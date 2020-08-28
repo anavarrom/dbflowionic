@@ -8,8 +8,44 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
-import { AppointmentService } from './data/api/appointment.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { DataModule } from './data/data.module';
+import { Configuration, ConfigurationParameters } from './data/configuration';
+import { environment } from 'src/environments/environment';
+import { CoreModule } from './core/core.module';
+
+export function apiConfigFactory(): Configuration {
+  const params: ConfigurationParameters = {
+    // set configuration parameters here.
+    basePath: environment.basePath,
+    username: 'patttsa'
+  };
+
+  return new Configuration(params);
+}
+
+const dbFlow6Components = [
+ // LoginComponent,
+ // PublicComponent
+ // TabsPage
+];
+
+const externalModules = [
+  // KeycloakAngularModule
+  // AppRoutingModule,
+  // ReactiveFormsModule,
+  // Ng2UiAuthModule,
+  // MobxAngularModule
+  // FontAwesomeModule
+];
+const customModules = [
+  // SecureModule,
+  // PublicModule,
+  CoreModule,
+  // SharedModule,
+  AuthModule,
+  DataModule.forRoot(apiConfigFactory)
+];
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +55,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     IonicModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
-    AuthModule
+    customModules    
   ],
   providers: [
     {
@@ -27,7 +63,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
       useClass: AuthInterceptor,
       multi: true,
     },
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AppointmentService
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
