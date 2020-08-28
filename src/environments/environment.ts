@@ -6,10 +6,11 @@ import { StompConfig } from '@stomp/ng2-stompjs';
 // The list of file replacements can be found in `angular.json`.
 
 // TODO: Hay que conseguir que los websockets funcionen con ZUUL
-export function socketProvider() {
+/*export function socketProvider() {
   return new SockJS('http://localhost:8092/websocket/dbFlowChat');
 }
-
+*/
+/*
 const stompConfig: StompConfig = {
   // Which server?
   url: socketProvider,
@@ -34,7 +35,7 @@ const stompConfig: StompConfig = {
   // Will log diagnostics on console
   debug: true
 };
-
+*/
 export const environment = {
   production: false,
   // basePath: 'http://10.0.2.2:8080/services',
@@ -48,8 +49,7 @@ export const environment = {
     end_session_redirect_url: 'http://localhost:8100/endsession',
     scopes: 'openid profile offline_access',
     pkce: true
-  },
-  stompConfig
+  }  //, stompConfig
 };
 
 /*

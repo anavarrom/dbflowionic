@@ -49,11 +49,12 @@ const externalModules = [
   ],
   providers:  [
     dbFlow6Stores,
-    StompService,
+    /*StompService,
     {
       provide: StompConfig,
       useValue: environment.stompConfig
-    }/*
+    }*/
+    /*
     {
       provide: HTTP_INTERCEPTORS,
       useClass: KeycloakBearerInterceptor,

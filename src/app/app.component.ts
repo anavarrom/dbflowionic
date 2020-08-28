@@ -3,7 +3,7 @@ import { Plugins } from '@capacitor/core';
 
 const { SplashScreen } = Plugins;
 
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +11,15 @@ import { Platform } from '@ionic/angular';
 })
 export class AppComponent {
   constructor(
-    private platform: Platform
+    private platform: Platform,
+    private menu: MenuController
   ) {
     this.initializeApp();
   }
-
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
   initializeApp() {
     this.platform.ready().then(() => {
       SplashScreen.hide();

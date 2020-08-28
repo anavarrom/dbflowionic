@@ -26,7 +26,7 @@ export class AuthCallbackPage implements OnInit, OnDestroy {
 
   postCallback(action: IAuthAction) {
     if (action.action === AuthActions.SignInSuccess) {
-      this.navCtrl.navigateRoot('home');
+      this.navCtrl.navigateRoot('app/tabs');
     }
 
     if (action.action === AuthActions.SignInFailed) {

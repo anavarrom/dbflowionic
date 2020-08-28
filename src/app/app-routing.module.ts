@@ -4,6 +4,11 @@ import { AuthGuardService } from './auth/auth-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
+  {
+    path: 'app', canActivate: [AuthGuardService],
+    loadChildren: () => import('./secure/home/home.module').then(m => m.HomePageModule)
+  },
+
   { path: 'home', canActivate: [AuthGuardService], loadChildren: './secure/home/home.module#HomePageModule' },
   { path: 'landing', loadChildren: './public/landing/landing.module#LandingPageModule' },
   { path: 'callback', loadChildren: './public/auth/auth-callback/auth-callback.module#AuthCallbackPageModule' },

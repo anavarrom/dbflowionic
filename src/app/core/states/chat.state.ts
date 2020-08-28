@@ -10,7 +10,7 @@ import { HttpResponse } from '@angular/common/http';
 import { IChat, IChatMessage, IAppointment, ChatType } from 'src/app/data/interfaces/models';
 import { MessageService } from 'src/app/data/api/message.service';
 import { ChatMessage } from '../models/message';
-import { RxStompService, StompService, StompState } from '@stomp/ng2-stompjs';
+// import { RxStompService, StompService, StompState } from '@stomp/ng2-stompjs';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
 // import { map, take } from 'rxjs/operators';
@@ -45,8 +45,8 @@ export class ChatStore {
   public connectionStatus$: Observable<string>;
 
     constructor(private store: Store, private chatService: ChatService,
-                private messageService: MessageService, 
-                private _stompService: StompService) {
+                private messageService: MessageService/*, 
+                private _stompService: StompService*/) {
         // this.notificationOptions        = new PaginateOptions();
         // this.notificationOptions.limit  = 50;
         // this.notificationOptions.page   = 0;
@@ -139,7 +139,7 @@ export class ChatStore {
     // Lanzamos por websocket el mensaje
     // const event = new SendWebSocketMessage({ type: 'message', msg });
     // this.store.dispatch(event);
-    this._stompService.publish('/chat/newMessage',  JSON.stringify(msg));
+    // this._stompService.publish('/chat/newMessage',  JSON.stringify(msg));
   }
 
   @Action(GoToChatFromAppointmentAttempt)

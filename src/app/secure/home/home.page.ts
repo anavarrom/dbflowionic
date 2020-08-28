@@ -34,6 +34,7 @@ export class HomePage implements OnInit, OnDestroy {
     private auth: AuthService,
     private navCtrl: NavController,
     private appService: AppointmentService
+    
   ) { }
 
   ngOnInit() {
@@ -45,7 +46,7 @@ export class HomePage implements OnInit, OnDestroy {
     this.auth.removeActionObserver(this.observer);
     this.auth.removeActionObserver(this.userObserver);
   }
-
+  
   private onUserInfoSucces(action: IAuthAction): void {
     if (action.action === AuthActions.LoadUserInfoSuccess) {
       this.userInfo = action.user;
